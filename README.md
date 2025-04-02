@@ -1,97 +1,88 @@
-# Distributed-File-System-with-Replication-locking-consistency-management
-This project implements a Distributed File System (DFS) that ensures data replication, file locking, and consistency management across multiple file servers. The system allows clients to read, write, and manage files efficiently while maintaining synchronization between distributed nodes.
-# Distributed File System with Replication, Locking, and Consistency Management
+# 🚀 Distributed File System with Data Replication and Consistency
 
-## 📌 Project Overview
-This project implements a **Distributed File System (DFS)** that ensures **data replication, file locking, and consistency management** across multiple file servers. The system enables multiple clients to perform **read and write operations** efficiently while maintaining **synchronization** between distributed nodes.
+## 📌 Overview
+This project implements a **Distributed File System (DFS)** that ensures data replication and consistency across multiple servers. It allows clients to perform read and write operations while maintaining file versioning, locking, and directory services.
 
-## 🚀 Features
-- **File Replication**: Ensures high availability and fault tolerance by maintaining copies of files across multiple servers.
-- **Locking Mechanism**: Prevents race conditions using file locks to maintain exclusive access during write operations.
-- **Consistency Management**: Synchronizes file versions across servers to maintain data integrity.
-- **Client-Server Architecture**: A directory service maps file names to respective servers and directs clients to the appropriate file server.
-- **Fault Tolerance**: If a primary server fails, clients are redirected to a replicated file server.
+## ✨ Features
+- 📂 **File Read & Write Operations**: Clients can read from and write to files stored on distributed servers.
+- 🔄 **File Versioning**: Keeps track of file versions to ensure consistency.
+- 🔐 **Locking Mechanism**: Ensures that only one client can write to a file at a time.
+- 📡 **Replication & Consistency**: Files are replicated across multiple servers to ensure availability.
+- 📁 **Directory Service**: Maintains metadata about stored files and their locations.
 
-## 🛠 Technologies Used
-- **Python** (Sockets, Threading, Synchronization)
-- **Networking Concepts** (Client-Server Model, TCP Communication)
-- **Concurrency Control** (Locks, Synchronization, Timeout Handling)
-
-## 🔧 System Components
-### 1️⃣ **Directory Service**
-- Maintains mappings of logical file names to actual servers.
-- Manages **primary and replica assignments** for fault tolerance.
-- Routes client requests to the appropriate file server.
-
-### 2️⃣ **File Servers**
-- Handle **file read and write** operations.
-- Ensure **synchronization of file versions** across replicas.
-- Implement **locking mechanisms** for concurrent writes.
-
-### 3️⃣ **Clients**
-- Send **read/write requests** to the directory service.
-- Communicate with the designated file server to access the requested file.
-- Handle **timeouts and retries** for fault tolerance.
-
-## 📂 Folder Structure
+## 📂 Project Structure
 ```
-📂 Distributed-File-System
-│-- 📁 client/              # Client-side operations
-│-- 📁 servers/             # File server implementations
-│-- 📁 directory_service/   # Centralized directory service
-│-- 📄 client.py            # Main client program
-│-- 📄 fileserverA.py       # File server A
-│-- 📄 fileserverB.py       # File server B
-│-- 📄 fileserverC.py       # File server C
-│-- 📄 directory_service.py # Directory service script
-│-- 📄 client_lib.py        # Client library for request handling
-│-- 📄 file_mappings.txt    # File-server mapping information
-│-- 📄 README.md            # Project documentation
+├── client.py               # 🖥️ Client-side application for interacting with the DFS
+├── client_lib.py           # 🔧 Helper functions for client operations
+├── directory_service.py    # 📑 Directory Service to manage file mappings
+├── locking_service.py      # 🔒 Handles file locks to prevent concurrent writes
+├── file_mappings.csv       # 🗂️ Stores metadata about distributed files
+├── fileserverA/
+│   ├── file_serverA.py     # 📜 File server A
+│   ├── file1.txt - file7.txt  # 📄 Sample files
+├── fileserverB/
+│   ├── file_serverB.py     # 📜 File server B
+│   ├── file1.txt - file7.txt  # 📄 Sample files
+├── fileserverC/
+│   ├── file_serverC.py     # 📜 File server C
+│   ├── file1.txt - file7.txt  # 📄 Sample files
+└── README.md               # 📖 Project documentation
 ```
 
-## ⚙️ How to Run
-### **Step 1: Start the Directory Service**
-```sh
-python directory_service.py
-```
+## 🔍 How It Works
+### 1️⃣ Client Operations
+Clients can use commands to interact with the DFS:
+- ✍️ `<write> filename` - Write data to a file.
+- 📖 `<read> filename` - Read data from a file.
+- 📜 `<list>` - List available files.
+- 📝 `<instructions>` - Display available commands.
+- ❌ `<quit>` - Exit the application.
 
-### **Step 2: Start File Servers**
-```sh
-python fileserverA.py
-python fileserverB.py
-python fileserverC.py
-```
+### 2️⃣ Directory Service
+- 🗂️ Maintains file-to-server mappings using `file_mappings.csv`.
+- 🔄 Redirects client requests to the appropriate file server.
 
-### **Step 3: Run the Client**
-```sh
-python client.py
-```
+### 3️⃣ Locking Service
+- 🚫 Prevents concurrent writes by managing file locks.
+- 📊 Implements a queuing mechanism for write requests.
 
-## 📜 Example Usage
-### **Write to a File**
-```
-<write> file1
-Enter content: This is a distributed system.
-```
+## 🛠️ Setup Instructions
+### 🔧 Prerequisites
+- 🐍 Python 3.x
 
-### **Read a File**
-```
-<read> file1
-File content: This is a distributed system.
-```
+### 🚀 Steps to Run the System
+1️⃣ **Start the Directory Service**:
+   ```sh
+   python directory_service.py
+   ```
+2️⃣ **Start the Locking Service**:
+   ```sh
+   python locking_service.py
+   ```
+3️⃣ **Start the File Servers**:
+   ```sh
+   python fileserverA/file_serverA.py &
+   python fileserverB/file_serverB.py &
+   python fileserverC/file_serverC.py &
+   ```
+4️⃣ **Run the Client**:
+   ```sh
+   python client.py
+   ```
+5️⃣ Follow the on-screen instructions to perform read/write operations.
+6️⃣ You can open multiple clients simultaneously, and everything will function correctly.
 
-## 🏆 Future Enhancements
-- Implement **distributed caching** for faster file access.
-- Introduce **version control** to track changes in replicated files.
-- Enable **load balancing** between file servers.
+## 🔮 Future Enhancements
+- ⚡ Implementing a more efficient consensus algorithm for replication consistency.
+- 🛡️ Introducing fault tolerance mechanisms for high availability.
+- 🖥️ Adding a GUI-based client interface for better usability.
+
+## 👨‍💻 Contributors
+- **Your Name** (Project Developer)
+
+## 📜 License
+This project is licensed under the MIT License.
 
 ---
-
-### 📢 **Contributing**
-Feel free to fork this repository, submit issues, and contribute improvements!
-
-### 📄 **License**
-This project is open-source and available under the **MIT License**.
-
-🚀 **Happy Coding!**
+This README provides an overview of the project, how it works, and how to run it. Feel free to modify it based on your requirements! 🚀
 
