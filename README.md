@@ -76,6 +76,7 @@ Clients can use commands to interact with the DFS:
 - ⚡ Implementing a more efficient consensus algorithm for replication consistency.
 - 🛡️ Introducing fault tolerance mechanisms for high availability.
 - 🖥️ Adding a GUI-based client interface for better usability.
+- 📝 Implementing the feature to create a new file, which is currently not supported but can be added easily.
 
 ## 👨‍💻 Contributors
 - **Your Name** (Project Developer)
