@@ -81,7 +81,9 @@ Clients can use commands to interact with the DFS:
 - **Your Name** (Project Developer)
 
 ## 📜 License
-This project is licensed under the MIT License.
+This project is not licensed under any organization and is intended for educational purposes only.
+You are free to use, modify, and share this project for learning and research.
+However, any commercial use or redistribution without permission is not allowed.
 
 ---
 This README provides an overview of the project, how it works, and how to run it. Feel free to modify it based on your requirements! 🚀
