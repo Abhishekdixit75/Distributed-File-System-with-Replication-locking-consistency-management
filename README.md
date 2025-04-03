@@ -79,7 +79,7 @@ Clients can use commands to interact with the DFS:
 - 📝 Implementing the feature to create a new file, which is currently not supported but can be added easily.
 
 ## 👨‍💻 Contributors
-- **Your Name** (Project Developer)
+- **ABHISHEK DIXIT** (Project Developer)
 
 ## 📜 License
 This project is not licensed under any organization and is intended for educational purposes only.
